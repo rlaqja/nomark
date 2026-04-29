@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security & Image Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>통합 보안 및 이미지 처리 툴</h1>
+            <p>모든 데이터는 브라우저 내부에서 안전하게 처리됩니다. (서버 전송 없음)</p>
+        </header>
+
+        <main>
+            <!-- 1. TXT 파일 보안 필터링 섹션 -->
+            <section class="tool-section" id="text-filter-section">
+                <h2>1. TXT 파일 보안 필터링</h2>
+                <p class="description">
+                    텍스트 파일을 업로드하면 설정된 키워드를 찾아 마스킹하거나 해당 줄을 삭제합니다.
+                </p>
+                <div class="control-group">
+                    <label for="txt-file-input" class="file-label">파일 선택</label>
+                    <input type="file" id="txt-file-input" accept=".txt">
+                    <span id="txt-file-name">선택된 파일 없음</span>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="filter-mode" value="mask" checked> 키워드 마스킹 (***)
+                    </label>
+                    <label>
+                        <input type="radio" name="filter-mode" value="delete"> 해당 줄 전체 삭제
+                    </label>
+                </div>
+                <div class="button-group">
+                    <button id="process-txt-btn" class="primary-btn">텍스트 처리 시작</button>
+                    <button id="download-txt-btn" class="secondary-btn" disabled>결과 다운로드</button>
+                </div>
+                <div class="preview-area">
+                    <h3>미리보기</h3>
+                    <pre id="txt-preview" class="preview-box"></pre>
+                </div>
+            </section>
+
+            <hr>
+
+            <!-- 2. Defect 이미지 패턴 제거 섹션 -->
+            <section class="tool-section" id="image-filter-section">
+                <h2>2. Defect 이미지 패턴 제거</h2>
+                <p class="description">
+                    웨이퍼 패턴 이미지에서 빨간색 점(Defect)만 남기고 배경을 흰색으로 변환합니다.
+                </p>
+                <div class="control-group">
+                    <label for="img-file-input" class="file-label">이미지 선택</label>
+                    <input type="file" id="img-file-input" accept="image/*">
+                    <span id="img-file-name">선택된 이미지 없음</span>
+                </div>
+                <div class="button-group">
+                    <button id="process-img-btn" class="primary-btn">이미지 변환 시작</button>
+                    <button id="download-img-btn" class="secondary-btn" disabled>이미지 다운로드</button>
+                </div>
+                <div class="preview-area">
+                    <h3>결과 미리보기</h3>
+                    <div class="canvas-container">
+                        <canvas id="result-canvas"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Security Tool Dashboard. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
